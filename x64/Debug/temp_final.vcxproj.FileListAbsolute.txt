@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\temp_final\x64\Debug\temp_final.exe
+C:\Users\Administrator\Desktop\4_2\Graphics lab\z\temp_final\x64\Debug\temp_final.exe
+C:\Users\Administrator\Desktop\4_2\Graphics lab\z\temp_final_2\x64\Debug\temp_final.exe
+I:\CSE 4-2\2. Lab\temp_final_2\x64\Debug\temp_final.exe
