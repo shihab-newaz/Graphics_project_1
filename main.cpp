@@ -20,63 +20,78 @@
 
 using namespace std;
 
+//prototype declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 void drawCube(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 model, float r, float g, float b);
-void drawCurveForKing(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model, float r, float g, float b);
-void drawCurveForBishop(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model, float r, float g, float b);
+void drawCurve(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model = glm::mat4(1.0f), float r = 1.0f, float g = 1.0f, float b = 1.0f);
 
 void room(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float r, float g, float b);
 void chess_board(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether);
 void cube_1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z,
     float cube_height, float cube_w, float cube_b, float r, float g, float b);
 
-void sphere_1(Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b, float red, float green, float blue);
+void drawSphere(Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b, float red, float green, float blue);
 
-void bishop(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,
-    float r, float g, float bl, float cube_x, float cube_y, float cube_z);
-void pawn1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void bishop1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
+    float b,  float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void bishop2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void bishop3(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void bishop4(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void pawn1(unsigned int& bezierVAO,unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn2(unsigned int& bezierVAO,unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn3(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn3(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn4(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn5(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn5(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn6(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn6(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn7(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn7(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn8(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn8(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn9(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn9(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn10(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn10(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn11(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn11(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void pawn12(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn12(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,
-    float r, float g, float bl, float cube_x, float cube_y, float cube_z);
-
+void queen(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, 
+    float w, float b,  float r, float g, float bl);
+void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void rook1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b);
+void rook2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b);
+void rook3(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b);
+void rook4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b);
 unsigned int loadTexture(char const* path, GLenum textureWrappingModeS, GLenum textureWrappingModeT, GLenum textureFilteringModeMin, GLenum textureFilteringModeMax);
 
 
@@ -176,10 +191,32 @@ float zForPawn7Cube2 = 2.0625f, zForPawn8Cube2 = 2.0625f, zForPawn9Cube2 = 2.062
 float zForPawn7Sphere2 = 0.875f+1.25f, zForPawn8Sphere2 = 0.875f + 1.25f, zForPawn9Sphere2 = 0.875f + 1.25f, zForPawn10Sphere2 = 0.875f + 1.25f, zForPawn11Sphere2 = 0.875f + 1.25f, zForPawn12Sphere2 = 0.875f + 1.25f;
 
 
-float xForBishop = 0.125f+0.25f,zForBishop=2.375f,yForBishop=0.405f;
-float xForBishopCube = 0.069f+0.25f, yForBishopCube = 0.25f, zForBishopCube = 2.325f;
+float xForBishop1 = 0.375f,zForBishop1=2.375f,yForBishop1=0.405f;
+float xForBishop1Cube = 0.069f+0.25f, yForBishop1Cube = 0.25f, zForBishop1Cube = 2.325f;
 
-float xforKing = 0.125f, zforKing = 2.375f;
+float xForBishop2 = 0.375f+0.75f, zForBishop2 = 2.375f, yForBishop2 = 0.405f;
+float xForBishop2Cube = 0.069f + 0.25f + 0.75, yForBishop2Cube = 0.25f, zForBishop2Cube = 2.325f;
+
+float xForBishop3 = 0.375f, zForBishop3 = 2.375f - 1.75f, yForBishop3 = 0.405f;
+float xForBishop3Cube = 0.069f + 0.25f, yForBishop3Cube = 0.25f, zForBishop3Cube = 2.325f - 1.75f;
+
+float xForBishop4 = 0.375f+0.75, zForBishop4= 2.375f-1.75f, yForBishop4 = 0.405f;
+float xForBishop4Cube = 0.069f + 0.25f + 0.75, yForBishop4Cube = 0.25f, zForBishop4Cube = 2.325f - 1.75f;
+
+float xforQueen1 = 0.625f, zforQueen1 = 2.375f;
+float xforQueen2 = 0.625f, zforQueen2 = 2.375f;
+
+float xforKing1= 0.875f, zforKing1= 2.375f;
+float xForKing1Cube = xforKing1, yForKing1Cube = 0.25f, zForKing1Cube = 2.325f;
+
+float xforKing2 = 0.875f, zforKing2 = 2.375f;
+float xForKing2Cube = xforKing2, yForKing2Cube = 0.25f, zForKing2Cube = 2.325f;
+
+float xforRook1 = 0.00f, zforRook1 = 2.375f - 0.775f;
+float xForRook1Cube = xforKing1, yForRook1Cube = 0.25f, zForRook1Cube = 2.325f;
+
+float xforRook2 = 1.5f, zforRook2 = 2.375f- 0.775f;
+float xForRook2Cube = xforKing2, yForRook2Cube = 0.25f, zForRook2Cube = 2.325f;
 
 
 // positions of the point lights
@@ -491,24 +528,51 @@ int main()
         modelforChessBoard = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
         lightingShader.setMat4("model", modelforChessBoard);
 
+        //Render the chess board and pieces
         chess_board(cubeVAO, lightingShader, modelforChessBoard);
 
-
-        glm::mat4 modelForKing;
+        glm::mat4 modelForQueen;
         identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
         rotateXMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
         rotateYMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Y), glm::vec3(0.0f, 1.0f, 0.0f));
         rotateZMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Z), glm::vec3(0.0f, 0.0f, 1.0f));
         scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X, scale_Y, scale_Z));
-        modelForKing = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
-        lightingShader.setMat4("model", modelForKing);
+        modelForQueen = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
+        lightingShader.setMat4("model", modelForQueen);
 
 
-       king(bezierVAOforAll, cubeVAO, lightingShader, modelForKing, xforKing, 0.505f, zforKing, 0.10f, 0.20f, 0.10f,0.1, 0.5, 0.8, xForBishopCube, yForBishopCube, zForBishopCube);
-        
-     
+       queen(bezierVAOforAll, cubeVAO, lightingShader, modelForQueen, xforQueen1, 0.175f, zforQueen1, 0.10f, 0.20f, 0.10f,0.1, 0.5, 0.8);
 
+
+       glm::mat4 modelForKing;
+       identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+       translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
+       rotateXMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+       rotateYMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Y), glm::vec3(0.0f, 1.0f, 0.0f));
+       rotateZMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Z), glm::vec3(0.0f, 0.0f, 1.0f));
+       scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X, scale_Y, scale_Z));
+       modelForKing = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
+       lightingShader.setMat4("model", modelForKing);
+
+
+       king(bezierVAOforAll, cubeVAO, lightingShader, modelForKing, xforKing1, 0.175f, zforKing1, 0.10f, 0.20f, 0.10f, 0.1, 0.5, 0.8,0.25,0.25,0.25);
+
+       glm::mat4 modelForRook;
+       identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+       translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
+       rotateXMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+       rotateYMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Y), glm::vec3(0.0f, 1.0f, 0.0f));
+       rotateZMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Z), glm::vec3(0.0f, 0.0f, 1.0f));
+       scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X, scale_Y, scale_Z));
+       modelForRook = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
+       lightingShader.setMat4("model", modelForRook);
+
+       rook1(cubeVAO, lightingShader, modelForKing, xforRook1, -0.125f, zforRook1,0.15,0.1,0.1, 0.1, 0.5, 0.8);
+       rook2(cubeVAO, lightingShader, modelForKing, xforRook2, -0.125f, zforRook2, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
+       //rook3(cubeVAO, lightingShader, modelForKing, xforRook3, -0.125f, zforRook3, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
+       //rook4(cubeVAO, lightingShader, modelForKing, xforRook4, -0.125f, zforRook4, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
+         
         glm::mat4 modelForPawn;
         identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
@@ -519,26 +583,26 @@ int main()
         modelForPawn = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
         lightingShader.setMat4("model", modelForPawn);
 
-        //Render the chess board and pieces
-        pawn1(cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn1Cube, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn1Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
-        pawn2(cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn2Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn2Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
-        pawn3(cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn3Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn3Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
-        pawn4(cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn4Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn4Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
-        pawn5(cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn5Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn5Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
-        pawn6(cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn6Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn6Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+    
+        pawn1(bezierVAOforAll,cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn1Cube, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn1Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+        pawn2(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn2Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn2Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+        pawn3(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn3Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn3Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+        pawn4(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn4Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn4Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+        pawn5(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn5Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn5Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+        pawn6(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn6Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn6Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
 
-        pawn7(cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn7Cube2, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn7Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
-        pawn8(cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn8Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn8Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
-        pawn9(cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn9Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn9Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
-        pawn10(cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn10Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn10Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
-        pawn11(cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn11Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn11Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
-        pawn12(cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn12Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn12Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn7(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn7Cube2, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn7Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn8(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn8Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn8Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn9(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn9Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn9Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn10(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn10Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn10Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn11(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn11Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn11Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+        pawn12(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn12Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn12Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
                
         if (pressForPawn1)
         {
             zForPawn1Cube += 0.25f;
             zForPawn1Sphere += 0.25f;
-            pawn1(cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn1Cube, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn1Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn1(bezierVAOforAll,cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn1Cube, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn1Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn1 = false;
          
         }
@@ -546,49 +610,49 @@ int main()
         {
             zForPawn2Cube += 0.25f;
             zForPawn2Sphere += 0.25f;
-            pawn2(cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn2Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn2Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn2(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn2Cube, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn2Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn2 = false;
         }
         if (pressForPawn3)
         {
             zForPawn3Cube += 0.25f;
             zForPawn3Sphere += 0.25f;
-            pawn3(cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn3Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn3Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn3(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, zForPawn3Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn3Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn3 = false;
         }
         if (pressForPawn4)
         {
             zForPawn4Cube += 0.25f;
             zForPawn4Sphere += 0.25f;
-            pawn4(cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn4Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn4Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn4(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn4Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn4Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn4 = false;
         }
         if (pressForPawn5)
         {
             zForPawn5Cube += 0.25f;
             zForPawn5Sphere += 0.25f;
-            pawn5(cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn5Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn5Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn5(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, zForPawn5Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn5Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn5 = false;
         }
         if (pressForPawn6)
         {
             zForPawn6Cube += 0.25f;
             zForPawn6Sphere += 0.25f;
-            pawn6(cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn6Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn6Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
+            pawn6(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, zForPawn6Cube , 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn6Sphere, 0.05, 0.05, 0.05f, 1.0, 1.0, 1.0);
             pressForPawn6 = false;
         }
         if (pressForPawn7)
         {
             zForPawn7Cube2 -= 0.25f;
             zForPawn7Sphere2 -= 0.25f;
-            pawn7(cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn7Cube2, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn7Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn7(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.0625f, 0.25f, zForPawn7Cube2, 0.15, 0.25, 0.15f, 0.125f, 0.525f, zForPawn7Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn7 = false;
         }
         if (pressForPawn8)
         {
             zForPawn8Cube2 -= 0.25f;
             zForPawn8Sphere2 -= 0.25f;
-            pawn8(cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn8Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn8Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn8(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.3125f, 0.25f, zForPawn8Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25f, 0.525f, zForPawn8Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn8 = false;
         }
 
@@ -596,7 +660,7 @@ int main()
         {
             zForPawn9Cube2 -= 0.25f;
             zForPawn9Sphere2 -= 0.25f;
-            pawn9(cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn9Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn9(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.5625f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 2.0, 0.525f, zForPawn9Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn9 = false;
         }
 
@@ -604,7 +668,7 @@ int main()
         {
             zForPawn10Cube2 -= 0.25f;
             zForPawn10Sphere2 -= 0.25f;
-            pawn10(cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn10Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn10Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn10(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 0.8125f, 0.25f, zForPawn10Cube2, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 3.0, 0.525f, zForPawn10Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn10 = false;
         }
 
@@ -612,7 +676,7 @@ int main()
         {
             zForPawn11Cube2 -= 0.25f;
             zForPawn11Sphere2 -= 0.25f;
-            pawn11(cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn11Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn11(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.0625f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 4.0, 0.525f, zForPawn11Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn11 = false;
         }
 
@@ -620,12 +684,12 @@ int main()
         {
             zForPawn12Cube2 -= 0.25f;
             zForPawn12Sphere2 -= 0.25f;
-            pawn12(cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn12Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
+            pawn12(bezierVAOforAll, cubeVAO, lightingShader, modelForPawn, 1.3125f, 0.25f, 2.0625f, 0.15, 0.25, 0.15f, 0.125f + 0.25 * 5.0, 0.525f, zForPawn12Sphere2, 0.05, 0.05, 0.05f, 0.1, 0.5, 0.8);
             pressForPawn12 = false;
         }
 
         glm::mat4 modelforBishop;
-        identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        identityMatrix = glm::mat4(1.0f); 
         translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
         rotateXMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
         rotateYMatrix = glm::rotate(identityMatrix, glm::radians(rotateAngle_Y), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -633,28 +697,12 @@ int main()
         scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X, scale_Y, scale_Z));
         modelforBishop = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
         lightingShader.setMat4("model", modelforBishop);
+        ////////////////////////////////////////////////////////////////////
 
-
-        bishop(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop, 0.405f, zForBishop, 0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishopCube, yForBishopCube, zForBishopCube);
-        cout << "after drawing bishop curves" << endl;
-        if (pressRforBishop1) {
-            zForBishop -= 0.25f;
-            zForBishopCube -= 0.25f;
-            xForBishop += .25f;
-            xForBishopCube += .25f;
-            bishop(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop, 0.405f, zForBishop, 0.1f, 0.105f, 0.08f, 0.1, 0.5, 0.8, xForBishopCube, 0.25f, zForBishopCube);
-            pressRforBishop1 = false;
-        }
-
-        if (pressLforBishop1) {
-            zForBishop -= 0.25f;
-            zForBishopCube -= 0.25f;
-            xForBishop -= .25f;
-            xForBishopCube -= .25f;
-            bishop(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop, 0.405f, zForBishop, 0.1f, 0.105f, 0.08f, 0.1, 0.5, 0.8, xForBishopCube, 0.25f, zForBishopCube);
-            pressLforBishop1 = false;
-        }
-
+        bishop1(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop1, 0.405f, zForBishop1,0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishop1Cube, yForBishop1Cube, zForBishop1Cube);  
+        bishop2(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop2, 0.405f, zForBishop2,0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishop2Cube , yForBishop2Cube, zForBishop2Cube);
+        bishop3(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop3, 0.405f, zForBishop3,0.05f, 0.05f, 0.04f, 1.0, 1.0, 1.0, xForBishop3Cube, yForBishop3Cube, zForBishop3Cube);
+        bishop4(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop4, 0.405f, zForBishop4,0.05f, 0.05f, 0.04f, 1.0, 1.0, 1.0, xForBishop4Cube , yForBishop4Cube, zForBishop4Cube);
 
         glm::mat4 modelForLighting;
 
@@ -675,8 +723,6 @@ int main()
             ourShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
         }
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
-
 
         modelForLighting = glm::mat4(1.0f);//spot_light 
         modelForLighting = glm::translate(modelForLighting, glm::vec3(3.0f, 2.5f, 2.5f));
@@ -716,7 +762,7 @@ int main()
         spotLight1.setUpSpotLight(lightingShaderWithTexture);
         spotLight2.setUpSpotLight(lightingShaderWithTexture);
 
-
+        //table
         glm::mat4 modelforTable = glm::mat4(1.0f);
         lightingShaderWithTexture.use();
         glm::mat4 translate = glm::mat4(1.0f);
@@ -766,18 +812,16 @@ int main()
         translate = glm::translate(modelforTable, glm::vec3(6.5f, -1.00f, 7.00f));
         modelforTable = scale * translate;
         cube.drawCubeWithTexture(lightingShaderWithTexture, modelforTable);
-
+        //room
         lightingShaderWithTexture.use();
         modelforTable = glm::mat4(1.0f);
         translate = glm::mat4(1.0f);
         scale = glm::mat4(1.0f);
         translate = glm::translate(modelforTable, glm::vec3(-0.5f, -0.25f, -0.50f));
-        scale = glm::scale(modelforTable, glm::vec3(25.125f, 15.25f, 25.125f));
+        scale = glm::scale(modelforTable, glm::vec3(25.125f*1.75f, 15.25f, 25.125f* 1.75f));
         modelforTable = scale * translate;
         cube2.drawCubeWithTexture(lightingShaderWithTexture, modelforTable);
-
- 
-            
+          
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -806,9 +850,65 @@ void drawCube(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 model = g
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
 
+void drawCurve(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model, float r , float g, float b )
+{
+    lightingShader.use();
+    lightingShader.setMat4("model", model);
+    lightingShader.setVec3("material.ambient", glm::vec3(r, g, b));
+    lightingShader.setVec3("material.diffuse", glm::vec3(r, g, b));
+    lightingShader.setVec3("material.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+    lightingShader.setFloat("material.shininess", 32.0f);
 
-void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,
-    float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+    glBindVertexArray(bezierVAO);
+    glDrawElements(GL_TRIANGLES, (unsigned int)indices.size(), GL_UNSIGNED_INT, (void*)0);
+    glBindVertexArray(0);
+}
+
+void queen(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
+    float b,float r, float g, float bl) {
+
+    glm::mat4 modelForQueen = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForQueen, glm::vec3(x, y, z));
+    scale = glm::scale(modelForQueen, glm::vec3(h, w, b));
+    modelForQueen = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForQueen, r, g, bl);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1 , 0.60, zforQueen1, 0.09f, 0.03f, 0.09f, 0.1, 0.5, 0.8);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.505, zforQueen1, 0.105f, 0.045f, 0.105f, 0.1, 0.5, 0.8);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.325, zforQueen1, 0.15f, 0.075f, 0.15f, 0.1, 0.5, 0.8);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.625, zforQueen1, 0.04f, 0.04f, 0.04f, 0.1, 0.5, 0.8);
+}
+
+
+
+void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
+    float b,float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
 
     glm::mat4 modelForKing = glm::mat4(1.0f);
     glm::mat4 translate = glm::mat4(1.0f);
@@ -817,22 +917,86 @@ void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader
     translate = glm::translate(modelForKing, glm::vec3(x, y, z));
     scale = glm::scale(modelForKing, glm::vec3(h, w, b));
     modelForKing = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForKing, r, g, bl);
 
-    lightingShader.use();
-    lightingShader.setMat4("model", modelForKing);
-    lightingShader.setVec3("material.ambient", glm::vec3(r, g, b));
-    lightingShader.setVec3("material.diffuse", glm::vec3(r, g, b));
-    lightingShader.setVec3("material.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-    lightingShader.setFloat("material.shininess", 32.0f);
-    cout << "bezier loaded for king " << bezierVAO << endl;
-    glBindVertexArray(bezierVAO);
-    glDrawElements(GL_TRIANGLES, (unsigned int)indices.size(), GL_UNSIGNED_INT, (void*)0);
-    glBindVertexArray(0);
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.60, zforKing1, 0.09f, 0.03f, 0.09f, 0.1, 0.5, 0.8);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.505, zforKing1, 0.105f, 0.045f, 0.105f, 0.1, 0.5, 0.8);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.325, zforKing1, 0.15f, 0.075f, 0.15f, 0.1, 0.5, 0.8);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForKing, glm::vec3(xForKing1Cube-0.01, yForKing1Cube+0.375, zForKing1Cube+0.045));
+    scale = glm::scale(modelForKing, glm::vec3(0.02f, 0.06f, 0.02f));
+    modelForKing = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForKing, glm::vec3(xForKing1Cube - 0.0325, yForKing1Cube + 0.395, zForKing1Cube + 0.045));
+    scale = glm::scale(modelForKing, glm::vec3(0.06f, 0.02f, 0.02f));
+    modelForKing = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
+
 }
 
+void pawn1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
+    float sphere_b, float r, float g, float b) {
 
-void bishop(unsigned int& bezierVAO,unsigned int& cubeVAO,Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,
-    float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y+0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y-0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y-0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
+
+}
+void bishop1(unsigned int& bezierVAO,unsigned int& cubeVAO,Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
 
     glm::mat4 modelForBishop = glm::mat4(1.0f);
     glm::mat4 translate = glm::mat4(1.0f);
@@ -841,54 +1005,42 @@ void bishop(unsigned int& bezierVAO,unsigned int& cubeVAO,Shader& lightingShader
     translate = glm::translate(modelForBishop, glm::vec3(x-0.01f, y+0.055, z));
     scale = glm::scale(modelForBishop, glm::vec3(h, w, b));
     modelForBishop = alTogether * translate * scale;
-
-    lightingShader.use();
-    lightingShader.setVec3("material.ambient", glm::vec3(r, g, bl));
-    lightingShader.setVec3("material.diffuse", glm::vec3(r, g, bl));
-    lightingShader.setVec3("material.specular", glm::vec3(r, g, bl));
-    lightingShader.setFloat("material.shininess", 32.0f);
-
-    lightingShader.setMat4("model", modelForBishop);  // Set the model matrix here
-
-    glBindVertexArray(bezierVAO);
-    cout << "bezier loaded for bishop " << bezierVAO << endl;
-    glDrawElements(GL_TRIANGLES, (unsigned int)indices.size(), GL_UNSIGNED_INT, (void*)0);
-    glBindVertexArray(0);
+    drawCurve(bezierVAO, lightingShader, modelForBishop, r, g, bl);
 
     modelForBishop = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForBishop = alTogether * translate * scale;
-    sphere_1(lightingShader, alTogether * modelForBishop, xForBishop-0.01f, yForBishop+0.165f, zForBishop, 0.0365f, 0.0365f, 0.0365f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForBishop, xForBishop1-0.01f, yForBishop1+0.165f, zForBishop1, 0.0365f, 0.0365f, 0.0365f, 0.1, 0.5, 0.8);
 
     modelForBishop = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForBishop = alTogether * translate * scale;
-    sphere_1(lightingShader, alTogether * modelForBishop, xForBishop, yForBishop-0.105f, zForBishop-0.01f, 0.2f, 0.01f, 0.2f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForBishop, xForBishop1, yForBishop1-0.105f, zForBishop1-0.01f, 0.2f, 0.01f, 0.2f, 0.1, 0.5, 0.8);
 
     modelForBishop = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForBishop = alTogether * translate * scale;
-    sphere_1(lightingShader, alTogether * modelForBishop, xForBishop-0.01, yForBishop + 0.085f, zForBishop, 0.15f, 0.05f, 0.15f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForBishop, xForBishop1-0.01, yForBishop1 + 0.085f, zForBishop1, 0.15f, 0.05f, 0.15f, 0.1, 0.5, 0.8);
 
     modelForBishop = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
-    translate = glm::translate(modelForBishop, glm::vec3(xForBishopCube, yForBishopCube, zForBishopCube));
+    translate = glm::translate(modelForBishop, glm::vec3(xForBishop1Cube, yForBishop1Cube, zForBishop1Cube));
     scale = glm::scale(modelForBishop, glm::vec3(0.10f, 0.25f, 0.10f));
     modelForBishop = alTogether * translate * scale;
     drawCube(cubeVAO, lightingShader, alTogether * modelForBishop, r, g, bl);
 
 }
 
-void sphere_1(Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,float red,float green,float blue) {
-
+void drawSphere(Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b,float red,float green,float blue) 
+{
     Sphere sphere = Sphere( 0.50f,  10, 20, glm::vec3(red, green, blue), glm::vec3(red, green, blue), glm::vec3(red, green, blue),  glm::vec3(red, green, blue), 1.0f) ;
     glm::mat4 modelForSphere = glm::mat4(1.0f);
     glm::mat4 translate = glm::mat4(1.0f);
@@ -915,7 +1067,6 @@ void cube_1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether,
     drawCube(cubeVAO, lightingShader, alTogether * model, r, g, b);
 
 }
-
 
 
 void room(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float r, float g, float b) {
@@ -959,11 +1110,6 @@ void chess_board(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alToge
 }
 
 
-
-
-
-
-
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
@@ -990,7 +1136,6 @@ void processInput(GLFWwindow* window)
         else if (rotateAxis_Y) rotateAngle_Y -= 0.1;
         else rotateAngle_Z -= 0.1;
     }
-
 
     //if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) translate_Y += 0.001;
     //if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) translate_Y -= 0.001;
@@ -1027,125 +1172,201 @@ void processInput(GLFWwindow* window)
         rotateAxis_Z = 1.0;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-    {
-        eyeX += 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
-    {
-        eyeX -= 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
-    {
-        eyeZ += 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
-    {
-        eyeZ -= 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-    {
-        eyeY += 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-    {
-        eyeY -= 2.5 * deltaTime;
-        basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (glfwGetKey(window, GLFW_KEY_PAUSE) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
-        if (!pressRforBishop1)
-            pressRforBishop1 = true;
+        xForBishop1 += 0.25f;
+        xForBishop1Cube += 0.25f;
+        zForBishop1 -= 0.25f;
+        zForBishop1Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop1 -= 0.25f;
+        xForBishop1Cube -= 0.25f;
+        zForBishop1 -= 0.25f;
+        zForBishop1Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop1 += 0.25f;
+        xForBishop1Cube += 0.25f;
+        zForBishop1 += 0.25f;
+        zForBishop1Cube += 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop1 -= 0.25f;
+        xForBishop1Cube -= 0.25f;
+        zForBishop1 += 0.25f;
+        zForBishop1Cube += 0.25f;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_L)&& glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop2 += 0.25f;
+        xForBishop2Cube += 0.25f;
+        zForBishop2 -= 0.25f;
+        zForBishop2Cube-= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_L) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop2 -= 0.25f;
+        xForBishop2Cube -= 0.25f;
+        zForBishop2 -= 0.25f;
+        zForBishop2Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_L) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop2 += 0.25f;
+        xForBishop2Cube += 0.25f;
+        zForBishop2 += 0.25f;
+        zForBishop2Cube += 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_L) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop2 -= 0.25f;
+        xForBishop2Cube -= 0.25f;
+        zForBishop2 += 0.25f;
+        zForBishop2Cube += 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_O) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop3 += 0.25f;
+        xForBishop3Cube += 0.25f;
+        zForBishop3 -= 0.25f;
+        zForBishop3Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_O) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop3 -= 0.25f;
+        xForBishop3Cube -= 0.25f;
+        zForBishop3 -= 0.25f;
+        zForBishop3Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_O) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop3 += 0.25f;
+        xForBishop3Cube += 0.25f;
+        zForBishop3 += 0.25f;
+        zForBishop3Cube += 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_O) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop3 -= 0.25f;
+        xForBishop3Cube -= 0.25f;
+        zForBishop3 += 0.25f;
+        zForBishop3Cube += 0.25f;
+    }
 
 
+    if (glfwGetKey(window, GLFW_KEY_P) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop4 += 0.25f;
+        xForBishop4Cube += 0.25f;
+        zForBishop4 -= 0.25f;
+        zForBishop4Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_P) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        xForBishop4 -= 0.25f;
+        xForBishop4Cube -= 0.25f;
+        zForBishop4 -= 0.25f;
+        zForBishop4Cube -= 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_P) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop4 += 0.25f;
+        xForBishop4Cube += 0.25f;
+        zForBishop4 += 0.25f;
+        zForBishop4Cube += 0.25f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_P) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        xForBishop4 -= 0.25f;
+        xForBishop4Cube -= 0.25f;
+        zForBishop4 += 0.25f;
+        zForBishop4Cube += 0.25f;
     }
     if (glfwGetKey(window, GLFW_KEY_PRINT_SCREEN) == GLFW_PRESS)
     {
         if (!pressLforBishop1)
             pressLforBishop1 = true;
 
-
     }
-    if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F1) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
        if(!pressForPawn1)
         pressForPawn1 = true;
    
  
     }
-    if (glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F2) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         if (!pressForPawn2)
             pressForPawn2= true;
 
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F3) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         if (!pressForPawn3)
             pressForPawn3= true;
 
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F4) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         if (!pressForPawn4)
             pressForPawn4= true;
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F5) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F5) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         if (!pressForPawn5)
             pressForPawn5= true;
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F6) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F6) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         if (!pressForPawn6)
             pressForPawn6= true;
 
     }
 
-    if (glfwGetKey(window, GLFW_KEY_F7) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F6) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn7)
             pressForPawn7 = true;
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F8) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F8) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn8)
             pressForPawn8 = true;
 
     }
-    if (glfwGetKey(window, GLFW_KEY_F9) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F9) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn9)
             pressForPawn9 = true;
 
     }
 
-    if (glfwGetKey(window, GLFW_KEY_F10) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_F10) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn10)
             pressForPawn10 = true;
 
-    }   if (glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS)
+    }   if (glfwGetKey(window, GLFW_KEY_F11) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn11)
             pressForPawn11 = true;
 
-    }   if (glfwGetKey(window, GLFW_KEY_F12) == GLFW_PRESS)
+    }   if (glfwGetKey(window, GLFW_KEY_F12) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
         if (!pressForPawn12)
             pressForPawn12 = true;
@@ -1464,12 +1685,6 @@ unsigned int hollowBezier(GLfloat ctrlpoints[], int L)
         }
     }
 
-    // generate index list of triangles
-    // k1--k1+1
-    // |  / |
-    // | /  |
-    // k2--k2+1
-
     int k1, k2;
     for (int i = 0; i < nt; ++i)
     {
@@ -1541,244 +1756,1248 @@ unsigned int hollowBezier(GLfloat ctrlpoints[], int L)
     return bezierVAO;
 }
 
-void pawn1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+
+void pawn2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
 
 }
-void pawn2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn3(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
+
 }
-void pawn3(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn4(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
+
 }
-void pawn4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn5(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
+
 }
-void pawn5(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn6(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, 1.0, 1.0, 1.0);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, 1.0, 1.0, 1.0);
+
 }
-void pawn6(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn7(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn7(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn8(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn8(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn9(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn9(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn10(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn10(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn11(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn11(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+void pawn12(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b) {
+
+    glm::mat4 modelforPawn = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelforPawn, glm::vec3(cube_x + 0.0625, cube_y, cube_z + 0.0675));
+    scale = glm::scale(modelforPawn, glm::vec3(0.07, 0.12f, 0.07));
+    modelforPawn = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelforPawn, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
-    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y + 0.025, sphere_z, sphere_height, sphere_w, sphere_b, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
-    modelForPawn = alTogether * translate * scale;
-    lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.205f, sphere_z, 0.10f, 0.050f, 0.10f, r, g, b);
+
+    modelforPawn = glm::mat4(1.0f);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    modelforPawn = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelforPawn, sphere_x, sphere_y - 0.015, sphere_z, 0.08f, 0.025f, 0.08f, r, g, b);
+
 }
-void pawn12(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
-    float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
-    float sphere_b, float r, float g, float b) {
+
+void bishop2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+
+    glm::mat4 modelForBishop = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(x - 0.01f, y + 0.055, z));
+    scale = glm::scale(modelForBishop, glm::vec3(h, w, b));
+    modelForBishop = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForBishop, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01f, y + 0.165f, z, 0.0365f, 0.0365f, 0.0365f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x, y - 0.105f, z - 0.01f, 0.2f, 0.01f, 0.2f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01, y + 0.085f, z, 0.15f, 0.05f, 0.15f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(cube_x, cube_y, cube_z));
+    scale = glm::scale(modelForBishop, glm::vec3(0.10f, 0.25f, 0.10f));
+    modelForBishop = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForBishop, r, g, bl);
+
+}
+void bishop3(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+
+    glm::mat4 modelForBishop = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(x - 0.01f, y + 0.055, z));
+    scale = glm::scale(modelForBishop, glm::vec3(h, w, b));
+    modelForBishop = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForBishop, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01f, y + 0.165f, z, 0.0365f, 0.0365f, 0.0365f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x, y - 0.105f, z - 0.01f, 0.2f, 0.01f, 0.2f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01, y + 0.085f, z, 0.15f, 0.05f, 0.15f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(cube_x, cube_y, cube_z));
+    scale = glm::scale(modelForBishop, glm::vec3(0.10f, 0.25f, 0.10f));
+    modelForBishop = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForBishop, r, g, bl);
+
+}
+void bishop4(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+
+    glm::mat4 modelForBishop = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(x - 0.01f, y + 0.055, z));
+    scale = glm::scale(modelForBishop, glm::vec3(h, w, b));
+    modelForBishop = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForBishop, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01f, y + 0.165f, z, 0.0365f, 0.0365f, 0.0365f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x, y - 0.105f, z - 0.01f, 0.2f, 0.01f, 0.2f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForBishop = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForBishop, x - 0.01, y + 0.085f, z, 0.15f, 0.05f, 0.15f, r, g, bl);
+
+    modelForBishop = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForBishop, glm::vec3(cube_x, cube_y, cube_z));
+    scale = glm::scale(modelForBishop, glm::vec3(0.10f, 0.25f, 0.10f));
+    modelForBishop = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForBishop, r, g, bl);
+
+}
+void rook1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b) {
+
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translate, rotateXMatrix, rotateYMatrix, rotateZMatrix, scale, modelForPawn;
-    translate = glm::translate(identityMatrix, glm::vec3(cube_x, cube_y, cube_z));
+    glm::mat4 translate, scale, modelForPawn;
+    glm::mat4 rotate;
+    rotate = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.05, cube_y + 0.40, cube_z + 0.75));
     scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
     modelForPawn = alTogether * translate * scale;
     lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.08, cube_y + 0.5, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.055, cube_w + 0.025, cube_b));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.6, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.025, cube_w - 0.05, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
     drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
     identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
-    translate = glm::translate(identityMatrix, glm::vec3(sphere_x, sphere_y, sphere_z));
-    scale = glm::scale(identityMatrix, glm::vec3(sphere_height, sphere_w, sphere_b));
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+}
+void rook2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b) {
+
+    glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    glm::mat4 translate, scale, modelForPawn;
+    glm::mat4 rotate;
+    rotate = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.05, cube_y + 0.40, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
     modelForPawn = alTogether * translate * scale;
     lightingShader.setMat4("model", modelForPawn);
-    Sphere sphere = Sphere(0.50f, 10, 20, glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), glm::vec3(r, g, b), 1.0f);
-    sphere.drawSphere(lightingShader, modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.08, cube_y + 0.5, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.055, cube_w + 0.025, cube_b));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.6, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.025, cube_w - 0.05, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+}
+
+void rook3(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b) {
+
+    glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    glm::mat4 translate, scale, modelForPawn;
+    glm::mat4 rotate;
+    rotate = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.05, cube_y + 0.40, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
+    modelForPawn = alTogether * translate * scale;
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.08, cube_y + 0.5, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.055, cube_w + 0.025, cube_b));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.6, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.025, cube_w - 0.05, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+}
+void rook4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    float cube_height, float cube_w, float cube_b, float r, float g, float b) {
+
+    glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    glm::mat4 translate, scale, modelForPawn;
+    glm::mat4 rotate;
+    rotate = glm::rotate(identityMatrix, glm::radians(rotateAngle_X), glm::vec3(1.0f, 0.0f, 0.0f));
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.05, cube_y + 0.40, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height, cube_w, cube_b));
+    modelForPawn = alTogether * translate * scale;
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.08, cube_y + 0.5, cube_z + 0.75));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.055, cube_w + 0.025, cube_b));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.6, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.025, cube_w - 0.05, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.05));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065 + .115, cube_y + 0.68, cube_z + 0.86 - 0.025));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    modelForPawn = alTogether * translate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.070, cube_y + .65, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b + 0.02));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + 0.065, cube_y + .68, cube_z + 0.725 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+
+    identityMatrix = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate = glm::translate(identityMatrix, glm::vec3(cube_x + .15, cube_y + .68, cube_z + 0.735 + .15));
+    scale = glm::scale(identityMatrix, glm::vec3(cube_height - 0.14, cube_w - 0.07, cube_b - 0.06));
+    rotate = glm::mat4(1.0f);
+    rotate = glm::rotate(identityMatrix, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelForPawn = alTogether * translate * rotate * scale;
+
+    lightingShader.setMat4("model", modelForPawn);
+
+    drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
 }
