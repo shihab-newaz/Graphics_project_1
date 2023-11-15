@@ -52,11 +52,6 @@ uniform SpotLight spotLight;
 uniform vec3 viewPos;
 
 
-
-
-
-
-
 // function prototypes
 vec3 CalcPointLight(Material material, PointLight light, vec3 N, vec3 fragPos, vec3 V);
 vec3 CalcDirLight(Material material, DirLight light, vec3 N, vec3 fragPos, vec3 V);
@@ -128,15 +123,12 @@ vec3 CalcSpotLight(Material material, SpotLight light, vec3 N,vec3 fragPos, vec3
     float theta = dot(L, normalize(-light.direction));
     float epsilon   = light.cutoff - light.outcutoff;
     float intensity = clamp((theta - light.outcutoff) / epsilon, 0.0, 1.0);
-    
     vec3 R = reflect(-L, N);
     
-    vec3 K_A = material.ambient;
-    vec3 K_D = material.diffuse;
-    vec3 K_S = material.specular;
-    
-   
-    
+   vec3 K_A = material.ambient;
+   vec3 K_D = material.diffuse;
+   vec3 K_S = material.specular;
+
     vec3 ambient = intensity*K_A * light.ambient;
     vec3 diffuse = intensity*K_D * max(dot(N, L), 0.0) * light.diffuse;
     vec3 specular = intensity*K_S * pow(max(dot(V, R), 0.0), material.shininess) * light.specular;

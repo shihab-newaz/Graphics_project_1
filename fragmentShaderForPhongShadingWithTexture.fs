@@ -116,6 +116,7 @@ vec3 CalcSpotLight(Material material, SpotLight light, vec3 N,vec3 fragPos, vec3
     float theta = dot(L, normalize(-light.direction));
     float epsilon   = light.cutoff - light.outcutoff;
     float intensity = clamp((theta - light.outcutoff) / epsilon, 0.0, 1.0);
+  
     
     vec3 R = reflect(-L, N);
     

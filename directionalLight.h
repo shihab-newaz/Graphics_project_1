@@ -32,9 +32,6 @@ public:
         lightingShader.setVec3("dirLight.specular", specularOn * specular);
 
 
-
-
-
     }
     void turnOff()
     {

@@ -2,313 +2,311 @@
 I:\CSE 4-2\2. Lab\temp_final_2\sphere.h(179,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 I:\CSE 4-2\2. Lab\temp_final_2\sphere.h(180,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 I:\CSE 4-2\2. Lab\temp_final_2\sphere.h(182,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(138,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(144,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(138,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(144,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(138,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(144,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(139,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(139,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(139,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(140,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(140,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(140,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(141,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(141,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(141,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(151,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(151,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(145,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(151,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(152,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(152,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(146,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(152,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(153,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(153,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(147,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(153,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(148,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(154,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(148,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(154,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(148,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(154,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(149,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(155,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(149,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(155,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(545,133): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(545,123): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(559,130): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(559,120): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(571,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(571,97): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(571,92): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(571,88): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(571,83): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(572,110): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(572,100): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(572,95): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(572,90): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(572,84): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(587,159): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(587,153): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(587,101): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(588,168): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(588,162): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(588,102): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(589,173): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(589,167): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(589,102): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(590,173): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(590,167): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(590,102): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(591,173): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(591,167): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(591,102): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(592,173): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(592,167): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(592,102): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(594,185): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(594,175): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(594,162): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(594,156): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(594,103): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,193): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,183): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,170): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,164): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(568,133): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(568,123): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(582,133): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(582,123): warning C4305: 'argument': truncation from 'double' to 'float'
 I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,103): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,198): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,188): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,175): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,169): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,103): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,201): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,191): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,105): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,201): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,191): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,105): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(599,201): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(599,191): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(599,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(599,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(599,105): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(605,163): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(605,157): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(605,105): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,166): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,106): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(627,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(627,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(627,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(634,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(634,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(634,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(641,178): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(641,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(641,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(648,189): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(648,179): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(648,166): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(648,160): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(648,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(655,197): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(655,187): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(655,174): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(655,168): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(655,107): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(663,195): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(663,185): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(663,172): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(663,166): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(663,100): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(671,205): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(671,195): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(671,182): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(671,176): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(671,109): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,95): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,90): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,86): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(595,81): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,94): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,90): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,86): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(596,81): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,90): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,86): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(597,81): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,91): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,86): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(598,81): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(611,159): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(611,153): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(611,101): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(612,168): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(612,162): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(612,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,173): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,167): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(613,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(614,173): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(614,167): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(614,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(615,173): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(615,167): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(615,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(616,173): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(616,167): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(616,102): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(618,185): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(618,175): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(618,162): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(618,156): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(618,103): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(619,193): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(619,183): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(619,170): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(619,164): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(619,103): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,198): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,188): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,175): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,169): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(620,103): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(621,201): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(621,191): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(621,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(621,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(621,105): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(622,201): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(622,191): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(622,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(622,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(622,105): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(623,201): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(623,191): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(623,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(623,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(623,105): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(629,163): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(629,157): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(629,105): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(637,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(637,166): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(637,106): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(644,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(644,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(644,107): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(651,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(651,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(651,107): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(658,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(658,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(658,107): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(665,178): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(665,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(665,107): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(672,189): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(672,179): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(672,166): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(672,160): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(672,107): warning C4305: 'argument': truncation from 'double' to 'float'
 I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,197): warning C4305: 'argument': truncation from 'double' to 'float'
 I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,187): warning C4305: 'argument': truncation from 'double' to 'float'
 I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,174): warning C4305: 'argument': truncation from 'double' to 'float'
 I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,168): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,101): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,197): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,187): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,174): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,168): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,101): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(702,139): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(702,129): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,139): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,129): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(884,122): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(884,112): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(884,73): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(891,125): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(891,115): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(891,72): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(898,123): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(898,113): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(898,72): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(905,122): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(905,112): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(927,118): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(927,108): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(927,70): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(934,122): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(934,112): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(934,70): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(941,120): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(941,110): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(941,70): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(981,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(995,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1015,150): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1015,140): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1022,142): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1022,132): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1029,145): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1029,135): warning C4305: 'argument': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1029,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1135,47): warning C4305: '-=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1136,52): warning C4305: '-=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1137,34): warning C4305: '-=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1155,29): warning C4305: '+=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1162,29): warning C4305: '+=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1169,29): warning C4305: '+=': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1648,33): warning C4305: 'initializing': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1651,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1661,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1667,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1668,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1778,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1792,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1813,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1827,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1848,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1862,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1883,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1897,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1918,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1932,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1953,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1967,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1988,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2002,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2023,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2037,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2058,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2072,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2093,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2107,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2128,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2142,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2177,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2220,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2263,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(679,107): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,195): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,185): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,172): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,166): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(687,100): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(695,205): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(695,195): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(695,182): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(695,176): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(695,109): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,197): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,187): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,174): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,168): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(703,101): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(711,197): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(711,187): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(711,174): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(711,168): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(711,101): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(727,139): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(727,129): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(728,139): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(728,129): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(915,64): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(922,63): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(929,63): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(958,62): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(965,62): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(972,62): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1012,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1026,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1046,150): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1046,140): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1053,142): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1053,132): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1060,145): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1060,135): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1060,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1168,47): warning C4305: '-=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1169,52): warning C4305: '-=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1170,34): warning C4305: '-=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1188,29): warning C4305: '+=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1195,29): warning C4305: '+=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1202,29): warning C4305: '+=': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1973,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1976,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1986,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1992,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(1993,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2103,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2117,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2138,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2152,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2173,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2187,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2208,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2222,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2243,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2257,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2278,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2292,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2313,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2327,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2348,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2362,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2383,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2397,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2418,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2432,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2453,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2467,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2502,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2545,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(2588,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3347,63): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3354,63): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3361,63): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3390,62): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3397,62): warning C4305: 'argument': truncation from 'double' to 'float'
+I:\CSE 4-2\2. Lab\temp_final_2\main.cpp(3404,62): warning C4305: 'argument': truncation from 'double' to 'float'
   temp_final.vcxproj -> I:\CSE 4-2\2. Lab\temp_final_2\x64\Debug\temp_final.exe

@@ -29,13 +29,14 @@ void processInput(GLFWwindow* window);
 void drawCube(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 model, float r, float g, float b);
 void drawCurve(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model = glm::mat4(1.0f), float r = 1.0f, float g = 1.0f, float b = 1.0f);
 
-void room(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float r, float g, float b);
 void chess_board(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether);
 void cube_1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z,
     float cube_height, float cube_w, float cube_b, float r, float g, float b);
 
 void drawSphere(Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, float b, float red, float green, float blue);
 
+
+void clock1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether);
 void bishop1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
     float b,  float r, float g, float bl, float cube_x, float cube_y, float cube_z);
 void bishop2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
@@ -80,9 +81,13 @@ void pawn11(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShad
 void pawn12(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float sphere_x, float sphere_y, float sphere_z, float sphere_height, float sphere_w,
     float sphere_b, float r, float g, float b);
-void queen(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, 
+void queen1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, 
     float w, float b,  float r, float g, float bl);
-void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+void queen2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h,
+    float w, float b, float r, float g, float bl);
+void king1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
+void king2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
     float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z);
 void rook1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float r, float g, float b);
@@ -92,6 +97,7 @@ void rook3(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, 
     float cube_height, float cube_w, float cube_b, float r, float g, float b);
 void rook4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float r, float g, float b);
+
 unsigned int loadTexture(char const* path, GLenum textureWrappingModeS, GLenum textureWrappingModeT, GLenum textureFilteringModeMin, GLenum textureFilteringModeMax);
 
 
@@ -118,6 +124,7 @@ float scale_X = 1.0;
 float scale_Y = 1.0;
 float scale_Z = 1.0;
 
+float angle_r = 0, speed = 0.1f;
 // camera
 Camera camera(glm::vec3(2.0f, 3.0f, 7.0f));
 float lastX = SCR_WIDTH / 2.0f;
@@ -132,7 +139,6 @@ BasicCamera basic_camera(eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, V);
 // viewport
 GLint viewport[4];
 
-/////////////////////////////////////////////////////////////
 
 vector <float> cntrlPoints= {
 0.0300, 2.2650, 5.1000,
@@ -181,7 +187,7 @@ bool pressForPawn12 = false;
 bool pressRforBishop1= false;
 bool pressLforBishop1= false;
 
-///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 float zForPawn1Cube = 0.8125f, zForPawn2Cube = 0.8125f,zForPawn3Cube = 0.8125,zForPawn4Cube = 0.8125f, zForPawn5Cube = 0.8125f, zForPawn6Cube = 0.8125f;
 float zForPawn1Sphere = 0.875f, zForPawn2Sphere = 0.875f, zForPawn3Sphere = 0.875f, zForPawn4Sphere = 0.875f, zForPawn5Sphere = 0.875f, zForPawn6Sphere = 0.875f ;
@@ -204,19 +210,19 @@ float xForBishop4 = 0.375f+0.75, zForBishop4= 2.375f-1.75f, yForBishop4 = 0.405f
 float xForBishop4Cube = 0.069f + 0.25f + 0.75, yForBishop4Cube = 0.25f, zForBishop4Cube = 2.325f - 1.75f;
 
 float xforQueen1 = 0.625f, zforQueen1 = 2.375f;
-float xforQueen2 = 0.625f, zforQueen2 = 2.375f;
+float xforQueen2 = 0.625f, zforQueen2 = 0.625f;
 
-float xforKing1= 0.875f, zforKing1= 2.375f;
-float xForKing1Cube = xforKing1, yForKing1Cube = 0.25f, zForKing1Cube = 2.325f;
+float xforKing1= 0.875f, yforKing1 = 0.175f, zforKing1= 2.375f;
+float xForKing1Cube = 0.875f, yForKing1Cube = 0.25f, zForKing1Cube = 2.325f;
 
-float xforKing2 = 0.875f, zforKing2 = 2.375f;
-float xForKing2Cube = xforKing2, yForKing2Cube = 0.25f, zForKing2Cube = 2.325f;
+float xforKing2 = 0.875f, yforKing2= 0.175f, zforKing2 = 0.625f;
+float xForKing2Cube = 0.875f, yForKing2Cube = 0.25f, zForKing2Cube = 0.625f;
 
 float xforRook1 = 0.00f, zforRook1 = 2.375f - 0.775f;
-float xForRook1Cube = xforKing1, yForRook1Cube = 0.25f, zForRook1Cube = 2.325f;
+float xforRook2 = 1.25f,  zforRook2 = 2.375f- 0.775f;
+float xforRook3 = 0.00f, zforRook3 = 2.375f - 2.525f;
+float xforRook4 = 1.25f, zforRook4 = 2.375f - 2.525f ;
 
-float xforRook2 = 1.5f, zforRook2 = 2.375f- 0.775f;
-float xForRook2Cube = xforKing2, yForRook2Cube = 0.25f, zForRook2Cube = 2.325f;
 
 
 // positions of the point lights
@@ -289,19 +295,23 @@ DirectionalLight directionalLight(-5.0f, -2.0f, 3.0f,
     .70f, 0.70f, 0.70f);
 
 
-SpotLight spotLight1(5.0f, 4.8f, 2.5f,
+//SpotLight spotLight1(5.0f, 4.8f, 2.5f,
+//    0, -1.0f, 0, 
+//    1.0f, 1.0f, 0.05f,
+//    0.8f, 0.8f, 0.8f,
+//    1.0f, 1.0f, 1.0f, glm::cos(glm::radians(180.0f)), glm::cos(glm::radians(180.0f)));
+
+//SpotLight spotLight2(5.0f, -10.0f, 2.5f,
+//    0, -1.0f, 0, 0.05f,
+//    0.05f, 0.05f,
+//    0.8f, 0.8f, 0.8f,
+//    1.0f, 1.0f, 1.0f, glm::cos(glm::radians(10.0f)), glm::cos(glm::radians(150.0f)));
+
+SpotLight spotLight2(5.0f, -10.0f, 2.5f,
     0, -1.0f, 0, 0.05f,
     0.05f, 0.05f,
     0.8f, 0.8f, 0.8f,
-    1.0f, 1.0f, 1.0f, glm::cos(glm::radians(270.0f)), glm::cos(glm::radians(270.0f)));
-
-SpotLight spotLight2(5.0f, 9.8f, 2.5f,
-    0, -1.0f, 0, 0.05f,
-    0.05f, 0.05f,
-    0.8f, 0.8f, 0.8f,
-    1.0f, 1.0f, 1.0f, glm::cos(glm::radians(180.0f)), glm::cos(glm::radians(180.0f)));
-
-
+    1.0f, 1.0f, 1.0f, glm::cos(glm::radians(210.0f)), glm::cos(glm::radians(120.0f)));
 
 // light settings
 bool pointLight1On = true;
@@ -333,10 +343,20 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
+    cout << "press F1,F2,F3,F4,F5,F6 and UP for pawn 1,2,3,4,5,6"<<endl;
+    cout << "press F7,F8,F9,F10,F11,F12 and UP for pawn 7,8,9,10,11,12" << endl;
+    cout << "press K and F1+F2 or F3+F4 for Bishop 1" << endl;
+    cout << "press L,O,P and UP or DOWN and LEFT or RIGHT for BISHOP 2,3,4" << endl;
+    cout << "press INSERT,DEL and UP,DOWN,LEFT,RIGHT or F1,F2,F3,F4 for KING 1 and 2" << endl;
+    cout << "press PAGE_UP,PAGE_DOWN and UP,DOWN,LEFT,RIGHT or F1,F2,F3,F4 for QUEEN 1 and 2" << endl;
 
+    cout << "press 1 to turn pointlights 1 and 3 on or off" << endl;
+    cout << "press 2 to turn pointlights 2,4 and 5 on or off" << endl;
+    cout << "press 3 to turn spotlight on or off" << endl;
+    cout << "press 4 to turn directional light on or off" << endl;
+    cout << "press 5 to turn ambient light on or off" << endl;
+    cout << "press 6 to turn diffusion light on or off" << endl;
+    cout << "press 7 to turn specular light on or off" << endl;
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "CSE 4208: Computer Graphics Laboratory", NULL, NULL);
@@ -380,7 +400,7 @@ int main()
     unsigned int diffMap = loadTexture(diffuseMapPath.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
     unsigned int specMap = loadTexture(specularMapPath.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
     Cube cube = Cube(diffMap, specMap, 32.0f, 0.0f, 0.0f, 1.0f, 1.0f);
-
+    ////////////////
     string diffuseMapPath2 = "wall.jpg";
     string specularMapPath2 = "white.jpg";
 
@@ -388,8 +408,14 @@ int main()
     unsigned int diffMap2 = loadTexture(diffuseMapPath2.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
     unsigned int specMap2 = loadTexture(specularMapPath2.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
     Cube cube2 = Cube(diffMap2, specMap2, 32.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+    ////////////////
+    string diffuseMapPath3 = "clock.jpg";
+    string specularMapPath3 = "white.jpg";
 
 
+    unsigned int diffMap3 = loadTexture(diffuseMapPath3.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+    unsigned int specMap3 = loadTexture(specularMapPath3.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+    Cube cube3= Cube(diffMap3, specMap3, 32.0f, 0.0f, 0.0f, 1.0f, 1.0f);
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
 
@@ -497,15 +523,12 @@ int main()
         lightingShader.use();
         lightingShader.setVec3("viewPos", camera.Position);
 
-        // set up point lights
+        // set up lights
         pointlight1.setUpPointLight(lightingShader);
         pointlight3.setUpPointLight(lightingShader);
         pointlight2.setUpPointLight(lightingShader);
         pointlight4.setUpPointLight(lightingShader);
         pointlight5.setUpPointLight(lightingShader);
-
-        // set up directional and spot lights
-
         directionalLight.setUpDirectionalLight(lightingShader);
         spotLight2.setUpSpotLight(lightingShader);
 
@@ -542,8 +565,8 @@ int main()
         lightingShader.setMat4("model", modelForQueen);
 
 
-       queen(bezierVAOforAll, cubeVAO, lightingShader, modelForQueen, xforQueen1, 0.175f, zforQueen1, 0.10f, 0.20f, 0.10f,0.1, 0.5, 0.8);
-
+      queen1(bezierVAOforAll, cubeVAO, lightingShader, modelForQueen, xforQueen1, 0.175f, zforQueen1, 0.10f, 0.20f, 0.10f,0.1, 0.5, 0.8);
+      queen2(bezierVAOforAll, cubeVAO, lightingShader, modelForQueen, xforQueen2, 0.175f, zforQueen2, 0.10f, 0.20f, 0.10f, 1.0, 1.0, 1.0);
 
        glm::mat4 modelForKing;
        identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -556,7 +579,8 @@ int main()
        lightingShader.setMat4("model", modelForKing);
 
 
-       king(bezierVAOforAll, cubeVAO, lightingShader, modelForKing, xforKing1, 0.175f, zforKing1, 0.10f, 0.20f, 0.10f, 0.1, 0.5, 0.8,0.25,0.25,0.25);
+      king1(bezierVAOforAll, cubeVAO, lightingShader, modelForKing, xforKing1, yforKing1, zforKing1, 0.10f, 0.20f, 0.10f, 0.1, 0.5, 0.8,xForKing1Cube,yForKing1Cube,zForKing1Cube);
+      king2(bezierVAOforAll, cubeVAO, lightingShader, modelForKing, xforKing2, yforKing2, zforKing2, 0.10f, 0.20f, 0.10f, 1.0, 1.0, 1.0,xForKing2Cube,yForKing2Cube,zForKing2Cube);
 
        glm::mat4 modelForRook;
        identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -568,10 +592,10 @@ int main()
        modelForRook = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
        lightingShader.setMat4("model", modelForRook);
 
-       rook1(cubeVAO, lightingShader, modelForKing, xforRook1, -0.125f, zforRook1,0.15,0.1,0.1, 0.1, 0.5, 0.8);
-       rook2(cubeVAO, lightingShader, modelForKing, xforRook2, -0.125f, zforRook2, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
-       //rook3(cubeVAO, lightingShader, modelForKing, xforRook3, -0.125f, zforRook3, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
-       //rook4(cubeVAO, lightingShader, modelForKing, xforRook4, -0.125f, zforRook4, 0.15, 0.1, 0.1, 0.1, 0.5, 0.8);
+       rook1(cubeVAO, lightingShader, modelForKing, xforRook1,-0.125f,zforRook1,0.15,0.1,0.1, 0.1,0.5,0.8);
+       rook2(cubeVAO, lightingShader, modelForKing, xforRook2,-0.125f,zforRook2,0.15,0.1,0.1,0.1,0.5,0.8);
+       rook3(cubeVAO, lightingShader, modelForKing, xforRook3,-0.125f,zforRook3,0.15,0.1,0.1,1.0,1.0,1.0);
+       rook4(cubeVAO, lightingShader, modelForKing, xforRook4,-0.125f,zforRook4,0.15,0.1, 0.1, 1.0,1.0,1.0);
          
         glm::mat4 modelForPawn;
         identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -697,21 +721,20 @@ int main()
         scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X, scale_Y, scale_Z));
         modelforBishop = translateMatrix * rotateXMatrix * rotateYMatrix * rotateZMatrix * scaleMatrix;
         lightingShader.setMat4("model", modelforBishop);
-        ////////////////////////////////////////////////////////////////////
 
-        bishop1(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop1, 0.405f, zForBishop1,0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishop1Cube, yForBishop1Cube, zForBishop1Cube);  
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        bishop1(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop1, 0.405f, zForBishop1,0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishop1Cube, yForBishop1Cube, zForBishop1Cube);
         bishop2(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop2, 0.405f, zForBishop2,0.05f, 0.05f, 0.04f, 0.1, 0.5, 0.8, xForBishop2Cube , yForBishop2Cube, zForBishop2Cube);
         bishop3(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop3, 0.405f, zForBishop3,0.05f, 0.05f, 0.04f, 1.0, 1.0, 1.0, xForBishop3Cube, yForBishop3Cube, zForBishop3Cube);
         bishop4(bezierVAOforAll, cubeVAO, lightingShader, modelforBishop, xForBishop4, 0.405f, zForBishop4,0.05f, 0.05f, 0.04f, 1.0, 1.0, 1.0, xForBishop4Cube , yForBishop4Cube, zForBishop4Cube);
 
         glm::mat4 modelForLighting;
-
-        ourShader.use();
-        ourShader.setMat4("projection", projection);
-        ourShader.setMat4("view", view);
-
-        // we now draw as many light bulbs as we have point lights.
-        glBindVertexArray(lightCubeVAO);
+       //glm::mat4 modelForLighting2;
+        //glm::mat4 modelForLighting3;
+        glm::mat4 translate = glm::mat4(1.0f);
+        glm::mat4 scale = glm::mat4(1.0f);
+        glm::mat4 rotate = glm::mat4(1.0f);
 
         modelForLighting = glm::mat4(1.0f);//point_light 
         modelForLighting = glm::translate(modelForLighting, glm::vec3(4.0f, 2.5f, 3.5f));
@@ -728,22 +751,12 @@ int main()
         modelForLighting = glm::translate(modelForLighting, glm::vec3(3.0f, 2.5f, 2.5f));
         modelForLighting = glm::scale(modelForLighting, glm::vec3(0.2f));
         ourShader.setMat4("model", modelForLighting);
-        ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.0f));
+        ourShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
         if (!spotLightOn) {
             ourShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
         }
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-        
-        modelForLighting = glm::mat4(1.0f);//spot_light 
-        modelForLighting = glm::translate(modelForLighting, glm::vec3(-1.0f, 3.8f, 2.5f));
-        modelForLighting = glm::scale(modelForLighting, glm::vec3(0.2f));
-        ourShader.setMat4("model", modelForLighting);
-        ourShader.setVec3("color", glm::vec3(0.0f, 0.8f, 0.8f));
-        if (!spotLightOn) {
-            ourShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
-        }
-        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
 
         lightingShaderWithTexture.use();
@@ -757,17 +770,17 @@ int main()
         pointlight4.setUpPointLight(lightingShaderWithTexture);
         pointlight3.setUpPointLight(lightingShaderWithTexture);
         pointlight5.setUpPointLight(lightingShaderWithTexture);
-     
+
         directionalLight.setUpDirectionalLight(lightingShaderWithTexture);
-        spotLight1.setUpSpotLight(lightingShaderWithTexture);
+        //spotLight1.setUpSpotLight(lightingShaderWithTexture);
         spotLight2.setUpSpotLight(lightingShaderWithTexture);
 
         //table
         glm::mat4 modelforTable = glm::mat4(1.0f);
         lightingShaderWithTexture.use();
-        glm::mat4 translate = glm::mat4(1.0f);
-        glm::mat4 scale = glm::mat4(1.0f);
-        glm::mat4 rotate = glm::mat4(1.0f);
+        translate = glm::mat4(1.0f);
+        scale = glm::mat4(1.0f);
+        rotate = glm::mat4(1.0f);
         scale = glm::scale(modelforTable, glm::vec3(4.0f, 0.20f, 4.0f));
         translate = glm::translate(modelforTable, glm::vec3(-0.25f, -0.25f,- 0.20f));
         modelforTable =scale * translate;
@@ -821,12 +834,30 @@ int main()
         scale = glm::scale(modelforTable, glm::vec3(25.125f*1.75f, 15.25f, 25.125f* 1.75f));
         modelforTable = scale * translate;
         cube2.drawCubeWithTexture(lightingShaderWithTexture, modelforTable);
-          
+
+        //clock
+        
+        glm::mat4 modelforClock = glm::mat4(1.0f);
+        translate = glm::mat4(1.0f);
+        scale = glm::mat4(1.0f);
+        rotate = glm::rotate(identityMatrix, glm::radians(angle_r), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelforClock = translate *scale;
+        clock1(cubeVAO, lightingShader, modelforClock);
+
+        modelforClock = glm::mat4(1.0f);
+        translate = glm::mat4(1.0f);
+        scale = glm::mat4(1.0f);
+        translate = glm::translate(modelforClock, glm::vec3(0.300f, 0.3125f, -21.50f));
+        scale = glm::scale(modelforClock, glm::vec3(2.125f, 2.125f, 0.01f));
+        modelforClock =  translate*scale;
+        cube3.drawCubeWithTexture(lightingShaderWithTexture, modelforClock);
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     glDeleteVertexArrays(1, &bezierVAOforBishop);
     glDeleteVertexArrays(1, &bezierVAOforKing);
+    glDeleteVertexArrays(1, &bezierVAOforAll);
     glDeleteVertexArrays(1, &cubeVAO);
     glDeleteVertexArrays(1, &lightCubeVAO);
     glDeleteBuffers(1, &cubeVBO);
@@ -845,9 +876,9 @@ void drawCube(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 model = g
     lightingShader.setFloat("material.shininess", 32.0f);
 
     lightingShader.setMat4("model", model);
-    cout << "cube drawn-->";
     glBindVertexArray(cubeVAO);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }
 
 void drawCurve(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model, float r , float g, float b )
@@ -864,7 +895,7 @@ void drawCurve(unsigned int& bezierVAO, Shader& lightingShader, glm::mat4 model,
     glBindVertexArray(0);
 }
 
-void queen(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
+void queen1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
     float b,float r, float g, float bl) {
 
     glm::mat4 modelForQueen = glm::mat4(1.0f);
@@ -881,33 +912,33 @@ void queen(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShade
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForQueen = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1 , 0.60, zforQueen1, 0.09f, 0.03f, 0.09f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForQueen, x , 0.60, z, 0.09f, 0.03f, 0.09f, r, g, bl);
 
     modelForQueen = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForQueen = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.505, zforQueen1, 0.105f, 0.045f, 0.105f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.505, z, 0.105f, 0.045f, 0.105f, r, g, bl);
 
     modelForQueen = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForQueen = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.325, zforQueen1, 0.15f, 0.075f, 0.15f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.325, z, 0.15f, 0.075f, 0.15f, r, g, bl);
 
     modelForQueen = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForQueen = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForQueen, xforQueen1, 0.625, zforQueen1, 0.04f, 0.04f, 0.04f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.625, z, 0.04f, 0.04f, 0.04f, r, g, bl);
 }
 
 
 
-void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
+void king1(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w, 
     float b,float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
 
     glm::mat4 modelForKing = glm::mat4(1.0f);
@@ -924,27 +955,27 @@ void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForKing = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.60, zforKing1, 0.09f, 0.03f, 0.09f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.60, z, 0.09f, 0.03f, 0.09f, r, g, bl);
 
     modelForKing = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForKing = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.505, zforKing1, 0.105f, 0.045f, 0.105f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.505, z, 0.105f, 0.045f, 0.105f, r, g, bl);
 
     modelForKing = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
     modelForKing = alTogether * translate * scale;
-    drawSphere(lightingShader, alTogether * modelForKing, xforKing1, 0.325, zforKing1, 0.15f, 0.075f, 0.15f, 0.1, 0.5, 0.8);
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.325, z, 0.15f, 0.075f, 0.15f, r, g, bl);
 
     modelForKing = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
-    translate = glm::translate(modelForKing, glm::vec3(xForKing1Cube-0.01, yForKing1Cube+0.375, zForKing1Cube+0.045));
+    translate = glm::translate(modelForKing, glm::vec3(cube_x-0.01, cube_y+0.375, cube_z+0.045));
     scale = glm::scale(modelForKing, glm::vec3(0.02f, 0.06f, 0.02f));
     modelForKing = alTogether * translate * scale;
     drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
@@ -953,7 +984,7 @@ void king(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader
     translate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     rotate = glm::mat4(1.0f);
-    translate = glm::translate(modelForKing, glm::vec3(xForKing1Cube - 0.0325, yForKing1Cube + 0.395, zForKing1Cube + 0.045));
+    translate = glm::translate(modelForKing, glm::vec3(cube_x - 0.0325, cube_y + 0.395, cube_z + 0.045));
     scale = glm::scale(modelForKing, glm::vec3(0.06f, 0.02f, 0.02f));
     modelForKing = alTogether * translate * scale;
     drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
@@ -1050,6 +1081,7 @@ void drawSphere(Shader& lightingShader, glm::mat4 alTogether, float x, float y, 
     scale = glm::scale(modelForSphere, glm::vec3(h, w, b));
     modelForSphere = alTogether * translate * scale;
     sphere.drawSphere(lightingShader, modelForSphere);
+   
 }
 
 void cube_1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether,float x, float y, float z,
@@ -1068,19 +1100,6 @@ void cube_1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether,
 
 }
 
-
-void room(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float r, float g, float b) {
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 translate = glm::mat4(1.0f);
-    glm::mat4 scale = glm::mat4(1.0f);
-    glm::mat4 rotate = glm::mat4(1.0f);
-
-    model = glm::mat4(1.0f);
-    translate = glm::translate(model, glm::vec3(x, y, z));
-    scale = glm::scale(model, glm::vec3(20.125f, 10.25f, 20.125f));
-    model = alTogether * translate * scale;
-    drawCube(cubeVAO, lightingShader, alTogether * model, r, g, b);
-}
 
 void chess_board(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether) {
     glm::mat4 model = glm::mat4(1.0f);
@@ -1109,7 +1128,21 @@ void chess_board(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alToge
     }
 }
 
+void clock1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether) {
 
+    glm::mat4 modelforClock = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    rotate= glm::rotate(modelforClock, glm::radians(angle_r), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    angle_r -= speed;
+    scale = glm::scale(modelforClock, glm::vec3(0.10, 0.8f, 0.1));
+    translate = glm::translate(modelforClock, glm::vec3(1.5, 1.5, -21.0));
+    modelforClock =  alTogether * translate*rotate *scale  ;
+    drawCube(cubeVAO, lightingShader, modelforClock, 0.0f, 0.0f, 0.0f);
+
+}
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
@@ -1175,7 +1208,7 @@ void processInput(GLFWwindow* window)
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+{   ///////////////////////////////bishop's moves
     if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         xForBishop1 += 0.25f;
@@ -1183,12 +1216,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         zForBishop1 -= 0.25f;
         zForBishop1Cube -= 0.25f;
     }
-    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_F1) && glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
     {
         xForBishop1 -= 0.25f;
         xForBishop1Cube -= 0.25f;
         zForBishop1 -= 0.25f;
         zForBishop1Cube -= 0.25f;
+        cout << "debugging";
     }
     if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_RIGHT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
@@ -1197,7 +1231,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         zForBishop1 += 0.25f;
         zForBishop1Cube += 0.25f;
     }
-    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_LEFT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_K) && glfwGetKey(window, GLFW_KEY_F3) && glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
     {
         xForBishop1 -= 0.25f;
         xForBishop1Cube -= 0.25f;
@@ -1297,6 +1331,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pressLforBishop1 = true;
 
     }
+    ///////////////////////////////pawn's moves
     if (glfwGetKey(window, GLFW_KEY_F1) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
        if(!pressForPawn1)
@@ -1372,6 +1407,296 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pressForPawn12 = true;
 
     }
+    ///////////////////////////////rook's moves
+    if (glfwGetKey(window, GLFW_KEY_U) && glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS)
+    {
+        xforRook1 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_U) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforRook1 += 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_U) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforRook1 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_U) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforRook1 += 0.25;
+
+    }
+
+
+    if (glfwGetKey(window, GLFW_KEY_I) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforRook2 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_I) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforRook2+= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_I) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforRook2-= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_I) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforRook2 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_H) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforRook3 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_H) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforRook3+= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_H) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforRook3 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_H) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforRook3 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_J) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforRook4 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_J) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforRook4 += 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_J) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforRook4 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_J) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforRook4 += 0.25;
+
+    }
+    ////////////////////////////////king's moves
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforKing1 -= 0.25;
+        zForKing1Cube -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforKing1 += 0.25;
+        zForKing1Cube += 0.25;
+    }
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforKing1 -= 0.25;
+        xForKing1Cube -= 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforKing1 += 0.25;
+        xForKing1Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
+    {
+        xforKing1 += 0.25;
+        zforKing1 -= 0.25;
+        xForKing1Cube += 0.25;
+        zForKing1Cube -= 0.25;
+    }
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+    {
+        xforKing1 += 0.25;
+        zforKing1 += 0.25;
+        xForKing1Cube += 0.25;
+        zForKing1Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
+    {
+        xforKing1 -= 0.25;
+        zforKing1 += 0.25;
+        xForKing1Cube -= 0.25;
+        zForKing1Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_INSERT) && glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+    {
+        xforKing1 -= 0.25;
+        zforKing1 -= 0.25;
+        xForKing1Cube -= 0.25;
+        zForKing1Cube -= 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DELETE) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+       zforKing2 -= 0.25;
+       zForKing2Cube -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_DELETE)  && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforKing2 += 0.25;
+        zForKing2Cube += 0.25;
+    }
+    if (glfwGetKey(window, GLFW_KEY_DELETE)  && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforKing2 -= 0.25;
+        xForKing2Cube -= 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DELETE)  && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforKing2 += 0.25;
+        xForKing2Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DELETE) && glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
+    {
+        xforKing2 += 0.25;
+        zforKing2 -= 0.25;
+        xForKing2Cube += 0.25;
+        zForKing2Cube -= 0.25;
+    }
+    if (glfwGetKey(window, GLFW_KEY_DELETE) && glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+    {
+        xforKing2 += 0.25;
+        zforKing2 += 0.25;
+        xForKing2Cube += 0.25;
+        zForKing2Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DELETE) && glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
+    {
+        xforKing2 -= 0.25;
+        zforKing2 += 0.25;
+        xForKing2Cube -= 0.25;
+        zForKing2Cube += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DELETE) && glfwGetKey(window, GLFW_KEY_F1)  == GLFW_PRESS)
+    {
+        xforKing2 -= 0.25;
+        zforKing2 -= 0.25;
+        xForKing2Cube -= 0.25;
+        zForKing2Cube -= 0.25;
+    }
+    
+
+    ///////queen's moves
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)  
+    {
+        zforQueen2 -= 0.25;
+   
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforQueen2 += 0.25;
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforQueen2 -= 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforQueen2 += 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
+    {
+        
+        xforQueen2 += 0.25;
+        zforQueen2 -= 0.25;
+      
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+    {
+        xforQueen2 += 0.25;
+        zforQueen2 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
+    {
+        xforQueen2 -= 0.25;
+        zforQueen2 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) && glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+    {
+        xforQueen2 -= 0.25;
+        zforQueen2 -= 0.25;
+    }
+
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        zforQueen1 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        zforQueen1 += 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        xforQueen1 -= 0.25;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        xforQueen1 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_F4) == GLFW_PRESS)
+    {
+        xforQueen1 += 0.25;
+        zforQueen1 -= 0.25;
+
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+    {
+        xforQueen1 += 0.25;
+        zforQueen1 += 0.25;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS)
+    {
+        xforQueen1 -= 0.25;
+        zforQueen1 += 0.25;
+  
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) && glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+    {
+        xforQueen1 -= 0.25;
+        zforQueen1 -= 0.25;
+
+    }
    if (key == GLFW_KEY_1 && action == GLFW_PRESS)
     {
         if (pointLight1On)
@@ -1431,14 +1756,14 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     {
         if (spotLightOn)
         {
-            spotLight1.turnOff();
+            //spotLight1.turnOff();
             spotLight2.turnOff();
 
             spotLightOn = !spotLightOn;
         }
         else
         {
-            spotLight1.turnOn();
+            //spotLight1.turnOn();
             spotLight2.turnOn();
             spotLightOn = !spotLightOn;
         }
@@ -1454,7 +1779,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnSpecularOff();
          
             directionalLight.turnSpecularOff();
-            spotLight1.turnSpecularOff();
+            //spotLight1.turnSpecularOff();
             spotLight2.turnSpecularOff();
             specularToggle = !specularToggle;
         }
@@ -1465,7 +1790,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnSpecularOn();
           
             directionalLight.turnSpecularOn();
-            spotLight1.turnSpecularOn();
+            //spotLight1.turnSpecularOn();
             spotLight2.turnSpecularOn();
             specularToggle = !specularToggle;
         }
@@ -1480,7 +1805,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnDiffuseOff();
           
             directionalLight.turnDiffuseOff();
-            spotLight1.turnDiffuseOff();
+            //spotLight1.turnDiffuseOff();
             spotLight2.turnDiffuseOff();
             diffuseToggle = !diffuseToggle;
         }
@@ -1491,7 +1816,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnDiffuseOn();
             
             directionalLight.turnDiffuseOn();
-            spotLight1.turnDiffuseOn();
+            //spotLight1.turnDiffuseOn();
             spotLight2.turnDiffuseOn();
             diffuseToggle = !diffuseToggle;
         }
@@ -1506,7 +1831,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnAmbientOff();
             
             directionalLight.turnAmbientOff();
-            spotLight1.turnAmbientOff();
+            //spotLight1.turnAmbientOff();
             spotLight2.turnAmbientOff();
             ambientToggle = !ambientToggle;
         }
@@ -1517,7 +1842,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight2.turnAmbientOn();
           
             directionalLight.turnAmbientOn();
-            spotLight1.turnAmbientOn();
+            //spotLight1.turnAmbientOn();
             spotLight2.turnAmbientOn();
             ambientToggle = !ambientToggle;
         }
@@ -2454,7 +2779,7 @@ void rook1(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, 
 
     drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
 }
-void rook2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
+    void rook2(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float cube_x, float cube_y, float cube_z,
     float cube_height, float cube_w, float cube_b, float r, float g, float b) {
 
     glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -3000,4 +3325,100 @@ void rook4(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, 
     lightingShader.setMat4("model", modelForPawn);
 
     drawCube(cubeVAO, lightingShader, alTogether * modelForPawn, r, g, b);
+}
+
+void queen2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl) {
+
+    glm::mat4 modelForQueen = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForQueen, glm::vec3(x, y, z));
+    scale = glm::scale(modelForQueen, glm::vec3(h, w, b));
+    modelForQueen = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForQueen, r, g, bl);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.60, z, 0.09f, 0.03f, 0.09f, r, g, bl);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.505, z, 0.105f, 0.045f, 0.105f, r, g, bl);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.325, z, 0.15f, 0.075f, 0.15f, r, g, bl);
+
+    modelForQueen = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForQueen = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForQueen, x, 0.625, z, 0.04f, 0.04f, 0.04f, r, g, bl);
+}
+
+
+
+void king2(unsigned int& bezierVAO, unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float x, float y, float z, float h, float w,
+    float b, float r, float g, float bl, float cube_x, float cube_y, float cube_z) {
+
+    glm::mat4 modelForKing = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForKing, glm::vec3(x, y, z));
+    scale = glm::scale(modelForKing, glm::vec3(h, w, b));
+    modelForKing = alTogether * translate * scale;
+    drawCurve(bezierVAO, lightingShader, modelForKing, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.60, z, 0.09f, 0.03f, 0.09f, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.505, z, 0.105f, 0.045f, 0.105f, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    modelForKing = alTogether * translate * scale;
+    drawSphere(lightingShader, alTogether * modelForKing, x, 0.325, z, 0.15f, 0.075f, 0.15f, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForKing, glm::vec3(cube_x - 0.01, cube_y + 0.375, cube_z ));
+    scale = glm::scale(modelForKing, glm::vec3(0.02f, 0.06f, 0.02f));
+    modelForKing = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
+
+    modelForKing = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+    translate = glm::translate(modelForKing, glm::vec3(cube_x - 0.0325, cube_y + 0.395, cube_z ));
+    scale = glm::scale(modelForKing, glm::vec3(0.06f, 0.02f, 0.02f));
+    modelForKing = alTogether * translate * scale;
+    drawCube(cubeVAO, lightingShader, alTogether * modelForKing, r, g, bl);
+
 }
